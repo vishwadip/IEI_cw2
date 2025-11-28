@@ -1,0 +1,9 @@
+# Operating System Files
+.DS_Store
+
+# Virtual Environment
+venv/
+*.pyc
+
+# ML Experiment Tracking
+mlruns/
