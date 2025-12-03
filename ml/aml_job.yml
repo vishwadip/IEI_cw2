@@ -1,10 +1,11 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 code: ../
-command: python src/train.py
+command: python -m src.train
 environment:
-  conda_file: env.yml
+  conda_file: env.yml         # path relative to the YAML file
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 compute: azureml:cpu-cluster
 experiment_name: ci_cd_failure_prediction
-description: Train binary classifier for CI/CD build failure prediction
+description: Train binary classifier
+
