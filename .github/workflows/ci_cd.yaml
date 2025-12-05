@@ -11,7 +11,9 @@ on:
       - master
 
 jobs:
-  ci-test-and-train:
+  # ---------------------- CI JOB ----------------------
+  ci:
+    name: "CI – tests"
     runs-on: ubuntu-latest
 
     steps:
@@ -26,8 +28,39 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mlflow scikit-learn pandas joblib
+          # if you have requirements.txt, keep this:
+          pip install -r requirements.txt
+          # otherwise, you can temporarily do:
+          # pip install mlflow scikit-learn pandas joblib
 
       - name: Run unit tests
         run: |
           python -m unittest discover -s tests
+
+  # ---------------------- CD JOB ----------------------
+  cd-train-azure:
+    name: "CD – trigger Azure ML job"
+    needs: ci                    # run ONLY if CI (tests) passed
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          # JSON from `az ad sp create-for-rbac --sdk-auth ...`
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install Azure ML CLI extension
+        run: |
+          az extension add -n ml -y || az extension update -n ml
+
+      - name: Submit Azure ML training job
+        run: |
+          az ml job create \
+            --file ml/aml_job.yml \
+            --resource-group my-rg \
+            --workspace-name my-ml-ws
