@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/apple/Documents/IEI_CW2/mlruns/0/c2178e4091f94ad6b8207f64a9a5b5e3/artifacts
+end_time: 1764332472694
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2178e4091f94ad6b8207f64a9a5b5e3
+run_name: persistent-wren-110
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764332470900
+status: 3
+tags: []
+user_id: apple

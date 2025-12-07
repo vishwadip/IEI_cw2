@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/apple/Documents/IEI_CW2/mlruns/0/dfbf52118ae841f281ac588b783660db/artifacts
+end_time: 1764591421330
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dfbf52118ae841f281ac588b783660db
+run_name: classy-donkey-595
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764591419573
+status: 3
+tags: []
+user_id: apple

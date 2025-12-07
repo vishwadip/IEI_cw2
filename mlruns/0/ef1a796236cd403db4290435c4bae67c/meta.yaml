@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/apple/Documents/IEI_CW2/mlruns/0/ef1a796236cd403db4290435c4bae67c/artifacts
+end_time: 1764662540180
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ef1a796236cd403db4290435c4bae67c
+run_name: judicious-stoat-373
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764662538349
+status: 3
+tags: []
+user_id: apple

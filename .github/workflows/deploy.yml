@@ -1,0 +1,53 @@
+name: CI-CD-Deploy-To-ACI
+
+on:
+  push:
+    branches:
+      - main   # auto deploy only when main changes
+
+jobs:
+  build-train-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # ===== TRAIN MODEL ON AML =====
+    - name: Run AML Training Job
+      run: az ml job create -f aml_job.yml
+
+    # ===== LOGIN TO ACR =====
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Login to ACR
+      run: az acr login --name vishwacw2acr
+
+    # ===== BUILD AND PUSH IMAGE =====
+    - name: Build Docker Image
+      run: docker build -t ci-cd-failure-api:latest .
+
+    - name: Tag & Push Image to ACR
+      run: |
+        docker tag ci-cd-failure-api:latest vishwacw2acr.azurecr.io/ci-cd-failure-api:latest
+        docker push vishwacw2acr.azurecr.io/ci-cd-failure-api:latest
+
+    # ===== AUTOMATIC DEPLOYMENT TO ACI =====
+    - name: Deploy to Azure Container Instance
+      run: |
+        az container create \
+          --resource-group my-rg \
+          --name ci-cd-failure-api \
+          --image vishwacw2acr.azurecr.io/ci-cd-failure-api:latest \
+          --cpu 1 --memory 1 \
+          --ports 8000 \
+          --dns-name-label vishwa-cicd-api-uk2 \
+          --os-type Linux \
+          --registry-login-server vishwacw2acr.azurecr.io \
+          --registry-username ${{ secrets.ACR_USERNAME }} \
+          --registry-password ${{ secrets.ACR_PASSWORD }}
+          || \
+        az container restart --resource-group my-rg --name ci-cd-failure-api

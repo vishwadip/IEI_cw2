@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/apple/Documents/IEI_CW2/mlruns/0/52eafed5fdd449adaa073fd09d614730/artifacts
+end_time: 1764663690655
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 52eafed5fdd449adaa073fd09d614730
+run_name: stylish-donkey-502
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764663689021
+status: 3
+tags: []
+user_id: apple

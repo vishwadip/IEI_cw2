@@ -1,0 +1,1 @@
+pipeline_id_enc,stage_name_enc,job_name_enc,task_name_enc,branch_enc,user_enc,environment_enc,hour,weekday,message_len,message_has_fail,is_user_unknown,is_env_unknown,job_fail_count

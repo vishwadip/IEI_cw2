@@ -1,0 +1,10 @@
+artifact_location: file:///Users/apple/Documents/IEI_CW2/mlruns/0/models/m-6a0b840f54e34336a070b12fd7f7a7bf/artifacts
+creation_timestamp: 1764662538430
+experiment_id: '0'
+last_updated_timestamp: 1764662540177
+model_id: m-6a0b840f54e34336a070b12fd7f7a7bf
+model_type: null
+name: model
+source_run_id: ef1a796236cd403db4290435c4bae67c
+status: 2
+status_message: null

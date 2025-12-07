@@ -1,0 +1,22 @@
+artifact_path: file:///Users/apple/Documents/IEI_CW2/mlruns/0/models/m-e2bd338973ad40bcaa97ec0444586562/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.6.0
+model_id: m-e2bd338973ad40bcaa97ec0444586562
+model_size_bytes: 133913
+model_uuid: m-e2bd338973ad40bcaa97ec0444586562
+prompts: null
+run_id: dfbf52118ae841f281ac588b783660db
+utc_time_created: '2025-12-01 12:16:59.661641'
