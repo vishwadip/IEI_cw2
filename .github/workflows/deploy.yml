@@ -3,12 +3,11 @@ name: CI-CD-Deploy-To-ACI
 on:
   push:
     branches:
-      - master   # auto deploy only when main changes
+      - master  # auto deploy only when main changes
 
 jobs:
   build-train-deploy:
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-lates
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
