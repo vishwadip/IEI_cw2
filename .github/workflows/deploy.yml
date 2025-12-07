@@ -1,9 +1,7 @@
 name: CI-CD-Deploy-To-ACI
 
 on:
-  push:
-    branches:
-      - master  # auto deploy only when main changes
+   workflow_dispatch: 
 
 jobs:
   build-train-deploy:
