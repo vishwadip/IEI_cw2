@@ -3,7 +3,7 @@ name: CI-CD-Deploy-To-ACI
 on:
   push:
     branches:
-      - main   # auto deploy only when main changes
+      - master   # auto deploy only when main changes
 
 jobs:
   build-train-deploy:
